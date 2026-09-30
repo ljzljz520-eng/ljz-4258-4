@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: dairy-homogenization-review
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/homogenization}
+    username: ${DB_USER:homogenization}
+    password: ${DB_PASSWORD:homogenization}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc.time_zone: UTC
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 50MB
+server:
+  port: ${SERVER_PORT:8080}
+app:
+  worker:
+    enabled: ${WORKER_ENABLED:false}
+    interval-ms: ${WORKER_INTERVAL_MS:5000}
+  pairing:
+    max-transport-delay-minutes: 1440
+    stable-window-tolerance-seconds: 30

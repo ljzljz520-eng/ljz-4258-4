@@ -1,0 +1,3 @@
+batch_number,valve_group,raw_label,pressure_bar,observed_at
+B-20260930-MILK-A,VG-A,P1,180.2,2026-09-30T09:10:00Z
+B-20260930-MILK-A,VG-A,P2,219.8,2026-09-30T09:40:00Z

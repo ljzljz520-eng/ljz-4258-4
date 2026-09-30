@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: homogenization
+      POSTGRES_USER: homogenization
+      POSTGRES_PASSWORD: homogenization
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U homogenization -d homogenization"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  api:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/homogenization
+      DB_USER: homogenization
+      DB_PASSWORD: homogenization
+      SERVER_PORT: 8080
+    ports: ["8080:8080"]
+    depends_on:
+      postgres: { condition: service_healthy }
+  worker:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    command: ["java","-jar","/app/app.jar","--spring.profiles.active=worker"]
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/homogenization
+      DB_USER: homogenization
+      DB_PASSWORD: homogenization
+      WORKER_ENABLED: "true"
+    depends_on:
+      postgres: { condition: service_healthy }
+  web:
+    image: node:20-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    volumes: ["./frontend:/app"]
+    ports: ["5173:5173"]
+volumes:
+  pgdata:
