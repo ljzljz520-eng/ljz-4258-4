@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/dairy}
+    username: ${SPRING_DATASOURCE_USERNAME:dairy}
+    password: ${SPRING_DATASOURCE_PASSWORD:dairy}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+app:
+  cors-origins: ${APP_CORS_ORIGINS:http://localhost:5173}
+  worker:
+    enabled: ${APP_WORKER_ENABLED:true}
+    poll-ms: 2000
+  demo:
+    auto-pair-on-startup: ${APP_DEMO_AUTO_PAIR_ON_STARTUP:true}

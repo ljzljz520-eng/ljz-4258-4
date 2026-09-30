@@ -1,0 +1,14 @@
+sampleCode=IMP-AFTER-STAGE-2,measurementPointCode=HOM-MAIN,algorithmInstrumentCode=PSA-01,algorithmName=Fraunberger-LDD,algorithmVersion=1.8.2,sampleType=AFTER,layer=MIDDLE,sampledAt=2026-09-30T14:20:00Z
+stageOrder=1,rawLabel=P-LOW,rawBar=49.5,measuredAt=2026-09-30T14:19:30Z
+stageOrder=2,rawLabel=P-MID,rawBar=99.5,measuredAt=2026-09-30T14:20:00Z
+stageOrder=3,rawLabel=P-HIGH,rawBar=149.5,measuredAt=2026-09-30T14:20:30Z
+binUm=0.1,volumePct=6.5
+binUm=0.2,volumePct=6.2
+binUm=0.5,volumePct=5.8
+binUm=1.0,volumePct=5.2
+binUm=2.0,volumePct=4.5
+binUm=5.0,volumePct=3.7
+binUm=10.0,volumePct=2.8
+binUm=20.0,volumePct=1.7
+binUm=50.0,volumePct=0.7
+binUm=100.0,volumePct=0.1
